@@ -105,9 +105,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Start\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Zorbek.Demo.Business.Interfaces\Zorbek.Demo.Business.Interfaces.csproj">
       <Project>{B45F3567-120A-4A26-9152-28A677B06E81}</Project>

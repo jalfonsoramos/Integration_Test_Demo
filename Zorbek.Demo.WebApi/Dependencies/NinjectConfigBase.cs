@@ -6,7 +6,7 @@ namespace Zorbek.Demo.WebApi.Dependencies
 {
     public abstract class NinjectConfigBase
     {
-        private StandardKernel kernel { get; set; }
+        protected StandardKernel kernel { get; set; }
 
         public StandardKernel GetKernel()
         {

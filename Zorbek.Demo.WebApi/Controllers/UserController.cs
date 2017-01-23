@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace Zorbek.Demo.WebApi.Controllers
 {
+    [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
         private readonly IUserService service;
@@ -16,16 +17,16 @@ namespace Zorbek.Demo.WebApi.Controllers
             this.service = service;
         }
 
-        [Route("users")]
+        [Route("")]
         [HttpPost]
         public IHttpActionResult Create(JObject json)
         {
             UserDTO user = new UserDTO
             {
-                Account = json.Value<string>("account") ?? string.Empty,
-                FirstName = json.Value<string>("firstName") ?? string.Empty,
-                LastName = json.Value<string>("lastName") ?? string.Empty,
-                DateOfBirth = json.Value<DateTime?>("dateOfBirth") ?? DateTime.Parse("01/01/1900")
+                Account = json.Value<string>("Account") ?? string.Empty,
+                FirstName = json.Value<string>("FirstName") ?? string.Empty,
+                LastName = json.Value<string>("LastName") ?? string.Empty,
+                DateOfBirth = json.Value<DateTime?>("DateOfBirth") ?? DateTime.Parse("01/01/1900")
             };
 
             int? id = service.Create(user);
@@ -42,7 +43,7 @@ namespace Zorbek.Demo.WebApi.Controllers
             return BadRequest();
         }
 
-        [Route("users/{id:int}")]
+        [Route("{id:int}")]
         [HttpGet]
         public IHttpActionResult GetById(int id)
         {
@@ -53,7 +54,7 @@ namespace Zorbek.Demo.WebApi.Controllers
             return Ok(user);
         }
 
-        [Route("users")]
+        [Route("")]
         [HttpGet]
         public IHttpActionResult GetByName([FromUri]string name)
         {
