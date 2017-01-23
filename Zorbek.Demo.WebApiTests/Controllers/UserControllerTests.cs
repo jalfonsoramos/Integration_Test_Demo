@@ -47,6 +47,16 @@ namespace Zorbek.Demo.WebApi.Controllers.Tests
         }
 
         [TestMethod()]
+        public void GetByIdNotFoundTest()
+        {
+            var response = apiClient.GetAsync("api/users/1").Result;
+
+            //Assert Http Status Code
+            Assert.AreEqual(HttpStatusCode.NotFound, response.StatusCode);
+           
+        }
+
+        [TestMethod()]
         public void GetByNameTest()
         {
             Assert.Fail();
